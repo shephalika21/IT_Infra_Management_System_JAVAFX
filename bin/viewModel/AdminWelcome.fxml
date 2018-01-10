@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.AdminPageController">
+   <children>
+      <TabPane prefHeight="848.0" prefWidth="1164.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+            <Tab fx:id="AdmDashboard" text="Dashboard">
+               <content>
+                  <AnchorPane fx:id="incBarChart" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnUserBar" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshAll" prefHeight="25.0" prefWidth="113.0" text="Refresh">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font></Button>
+                        <BarChart fx:id="UserbarChart" animated="false" layoutX="23.0" layoutY="67.0" prefHeight="314.0" prefWidth="404.0" styleClass="chart" stylesheets="@application.css">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="ServerStatusBarChart" animated="false" layoutX="769.0" layoutY="63.0" prefHeight="302.0" prefWidth="395.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <PieChart fx:id="dbPiechart" layoutX="421.0" layoutY="77.0" prefHeight="277.0" prefWidth="375.0" />
+                        <BarChart fx:id="Incbarchart" animated="false" layoutX="31.0" layoutY="411.0" prefHeight="341.0" prefWidth="388.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <PieChart fx:id="hdWareLocationPieChart" layoutX="419.0" layoutY="417.0" prefHeight="327.0" prefWidth="378.0" />
+                        <BarChart fx:id="storageTypeBarChart" animated="false" barGap="1.0" layoutX="741.0" layoutY="408.0" prefHeight="344.0" prefWidth="423.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmServers" text="Servers">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="762.0">
+                     <children>
+                        <Separator layoutX="355.0" layoutY="18.0" orientation="VERTICAL" prefHeight="792.0" prefWidth="0.0" />
+                        <TableView fx:id="ServerTable" layoutX="355.0" layoutY="56.0" prefHeight="753.0" prefWidth="808.0">
+                           <columns>
+                              <TableColumn fx:id="tblservername" prefWidth="124.0" text="Server name" />
+                              <TableColumn fx:id="tblserverip" prefWidth="98.0" text="Server IP" />
+                              <TableColumn fx:id="tblservertype" prefWidth="111.0" text="Server Type" />
+                              <TableColumn fx:id="tblservercpu" prefWidth="77.0" text="CPU" />
+                              <TableColumn fx:id="tblservermemory" prefWidth="111.0" text="Memory" />
+                              <TableColumn fx:id="tblservercriticality" prefWidth="131.0" text="Criticality" />
+                              <TableColumn fx:id="tblserverstatus" prefWidth="155.0" text="Status" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="24.0" layoutY="19.0" prefHeight="32.0" prefWidth="263.0" text="SERVER MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="59.0" prefHeight="17.0" prefWidth="195.0" text="Server Details">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="393.0" prefWidth="300.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="149.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="142.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Server Name" />
+                              <Label text="Server IP" GridPane.rowIndex="1" />
+                              <Label text="Server Type" GridPane.rowIndex="2" />
+                              <Label text="CPU" GridPane.rowIndex="3" />
+                              <Label text="Memory" GridPane.rowIndex="4" />
+                              <Label prefHeight="30.0" prefWidth="88.0" text="Status" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtserverstatus" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtservermemory" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtserverversion" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtservertype" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtserverip" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtservername" prefHeight="31.0" prefWidth="122.0" GridPane.columnIndex="1" />
+                              <Label layoutX="10.0" layoutY="160.0" prefHeight="30.0" prefWidth="95.0" text="Criticality" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtservercriticality" layoutX="110.0" layoutY="103.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtservercpu" layoutX="112.0" layoutY="223.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label layoutX="10.0" layoutY="220.0" prefHeight="30.0" prefWidth="88.0" text="OS Version" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtsearchServer" alignment="CENTER" layoutX="875.0" layoutY="13.0" prefHeight="32.0" prefWidth="180.0" promptText="Search...by Server Name" />
+                        <Button fx:id="btnsearchserver" layoutX="1072.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchServerAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1090.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnRefreshserver" layoutX="403.0" layoutY="11.0" mnemonicParsing="false" onAction="#refreshServerTableAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="424.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="updateserver" layoutX="95.0" layoutY="583.0" mnemonicParsing="false" onAction="#serverupdate" prefHeight="37.0" prefWidth="97.0" text="Update">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Button>
+                        <Button fx:id="btnaddserver" layoutX="31.0" layoutY="509.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addServerAction" prefHeight="37.0" prefWidth="98.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btndeleteserver" layoutX="177.0" layoutY="509.0" mnemonicParsing="false" onAction="#deleteServerAction" prefHeight="37.0" prefWidth="107.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmDatabase" text="Databases">
+               <content>
+                  <AnchorPane fx:id="DBtable" minHeight="0.0" minWidth="0.0" prefHeight="526.0" prefWidth="697.0">
+                     <children>
+                        <TableView fx:id="DatabaseTable" layoutX="378.0" layoutY="56.0" prefHeight="753.0" prefWidth="783.0">
+                           <columns>
+                              <TableColumn fx:id="tbDBName" prefWidth="133.0" text="Database Name" />
+                              <TableColumn fx:id="tbDBType" prefWidth="103.0" text="DB Type" />
+                              <TableColumn fx:id="tbDBServerName" prefWidth="119.0" text="Server Name" />
+                              <TableColumn fx:id="tbDBApps" prefWidth="108.0" text="Application" />
+                              <TableColumn fx:id="tbDBVer" prefWidth="154.0" text="Database Version" />
+                              <TableColumn fx:id="tbdbcriticality" prefWidth="165.0" text="Criticality" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="319.0" text="DATABASE MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="56.0" prefHeight="21.0" prefWidth="225.0" text="Database Details">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="390.0" prefWidth="351.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Database Name" />
+                              <Label text="Database Type" GridPane.rowIndex="1" />
+                              <Label text="Server Hosted On" GridPane.rowIndex="2" />
+                              <Label text="Application" GridPane.rowIndex="3" />
+                              <Label text="Database Version" GridPane.rowIndex="4" />
+                              <Label text="Critcality" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtDBhostedOn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtDBApp" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtDBVer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtDBtype" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtDatabaseName" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtDBCritcality" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtDBSearch" alignment="CENTER" layoutX="845.0" layoutY="13.0" prefHeight="32.0" prefWidth="198.0" promptText="Search by Database Name" />
+                        <Button fx:id="btnDBsearch" layoutX="1059.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchDBAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1077.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnDBRefresh" layoutX="378.0" layoutY="12.0" mnemonicParsing="false" onAction="#refreshDBTableAction" prefHeight="35.0" prefWidth="71.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="400.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnDBAdd" layoutX="35.0" layoutY="501.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addDatabaseAction" prefHeight="37.0" prefWidth="114.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDBDelete" layoutX="193.0" layoutY="501.0" mnemonicParsing="false" onAction="#deleteDatabaseAction" prefHeight="37.0" prefWidth="107.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmApps" text="Applications">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="526.0" prefWidth="697.0">
+                     <children>
+                        <TableView fx:id="AppTable" layoutX="390.0" layoutY="50.0" prefHeight="760.0" prefWidth="773.0">
+                           <columns>
+                              <TableColumn fx:id="tbAppName" prefWidth="157.0" text="Application Name" />
+                              <TableColumn fx:id="tbAppCrtically" prefWidth="99.0" text="Criticality" />
+                              <TableColumn fx:id="tbAppVer" text="Version" />
+                              <TableColumn fx:id="tbDBHostedOn" prefWidth="135.0" text="DB Hosted On" />
+                              <TableColumn fx:id="tbDbRelatedSer" prefWidth="131.0" text="Related Server" />
+                              <TableColumn fx:id="tbAppType" prefWidth="170.0" text="App Type" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="330.0" text="APPLICATIONS MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="60.0" prefHeight="17.0" prefWidth="195.0" text="Application Details">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="392.0" prefWidth="368.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="126.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="142.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="147.0" text="Application Name" />
+                              <Label text="Criticality" GridPane.rowIndex="1" />
+                              <Label text="Version" GridPane.rowIndex="2" />
+                              <Label text="DB Hosted on" GridPane.rowIndex="3" />
+                              <Label text="Related Server" GridPane.rowIndex="4" />
+                              <Label text="Application Type" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtAppDBhosted" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtAppReltServer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtAppType" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtAppVer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtAppCriticality" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtAppName" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtAppsearch" alignment="CENTER" layoutX="862.0" layoutY="13.0" prefHeight="32.0" prefWidth="201.0" promptText="Search by Application name" />
+                        <Button fx:id="btnAppsearch" layoutX="1075.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchApplicationAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1093.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnAppRefresh" layoutX="404.0" layoutY="11.0" mnemonicParsing="false" onAction="#refreshApplicationAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="425.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnAppAdd" layoutX="39.0" layoutY="512.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addAppAction" prefHeight="45.0" prefWidth="107.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAppDelete" layoutX="193.0" layoutY="511.0" mnemonicParsing="false" onAction="#deleteAppAction" prefHeight="46.0" prefWidth="120.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="lblcountapp" layoutX="15.0" layoutY="629.0" prefHeight="136.0" prefWidth="338.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmHardware" text="Hardwares">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="526.0" prefWidth="697.0">
+                     <children>
+                        <TableView fx:id="HWtable" layoutX="402.0" layoutY="56.0" prefHeight="752.0" prefWidth="763.0">
+                           <columns>
+                              <TableColumn fx:id="tbHWID" prefWidth="122.0" text="Hardware ID" />
+                              <TableColumn fx:id="tbTotalCPU" prefWidth="97.0" text="Total CPU" />
+                              <TableColumn fx:id="tbCPULeft" prefWidth="120.0" text="Left CPU" />
+                              <TableColumn fx:id="tbRAM" prefWidth="118.0" text="Total RAM" />
+                              <TableColumn fx:id="tbLeftRAM" prefWidth="133.0" text="Left RAM" />
+                              <TableColumn fx:id="tbHWCompany" prefWidth="172.0" text="Company Name" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="20.0" prefWidth="300.0" text="HARDWARE MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="56.0" prefHeight="21.0" prefWidth="218.0" text="Hardwares Information">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="391.0" prefWidth="375.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Hardware ID" />
+                              <Label text="Hardware Name" GridPane.rowIndex="1" />
+                              <Label text="Total CPU " GridPane.rowIndex="2" />
+                              <Label text="CPU left" GridPane.rowIndex="3" />
+                              <Label text="Total RAM" GridPane.rowIndex="4" />
+                              <Label text="RAM left" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtCPULeft" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtTotalRam" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtRAMLeft" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtTotalCPU" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtHWName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtHWID" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtHWCmpny" layoutX="110.0" layoutY="163.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtHWLocation" layoutX="10.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label layoutX="10.0" layoutY="167.0" text="Company" GridPane.rowIndex="7" />
+                              <Label layoutX="10.0" layoutY="17.0" text="Location" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtHWsearch" alignment="CENTER" layoutX="861.0" layoutY="13.0" prefHeight="32.0" prefWidth="180.0" promptText="Search by Hardware ID" />
+                        <Button fx:id="btnHWsearch" layoutX="1056.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchHardwareAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1074.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnHWRefresh" layoutX="417.0" layoutY="12.0" mnemonicParsing="false" onAction="#refreshHardwareAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="438.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnupdatehardware" layoutX="97.0" layoutY="584.0" mnemonicParsing="false" onAction="#hardwareupdate" prefHeight="37.0" prefWidth="144.0" text="Update Details">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Button>
+                        <Button fx:id="btnHWAdd" layoutX="39.0" layoutY="504.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addHardwareAction" prefHeight="37.0" prefWidth="107.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnHWDelete" layoutX="214.0" layoutY="503.0" mnemonicParsing="false" onAction="#deleteHardwareAction" prefHeight="37.0" prefWidth="124.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmStorage" text="Storage">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="526.0" prefWidth="697.0">
+                     <children>
+                        <TableView fx:id="StorageTable" layoutX="403.0" layoutY="67.0" prefHeight="744.0" prefWidth="764.0">
+                           <columns>
+                              <TableColumn fx:id="tbStorageID" prefWidth="133.0" text="Storage ID" />
+                              <TableColumn fx:id="tbStorageType" prefWidth="119.0" text="Storage Type" />
+                              <TableColumn fx:id="tbStorageCompany" prefWidth="92.0" text="Company" />
+                              <TableColumn fx:id="tbTotalStorage" prefWidth="128.0" text="Total Storage" />
+                              <TableColumn fx:id="tbLeftStorage" prefWidth="117.0" text="Left Storage" />
+                              <TableColumn fx:id="tbUsedStorage" prefWidth="174.0" text="Used Storage" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="258.0" text="STORAGE MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="56.0" prefHeight="17.0" prefWidth="195.0" text="Storage Information">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="397.0" prefWidth="374.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Storage ID" />
+                              <Label text="Storage Type" GridPane.rowIndex="1" />
+                              <Label text="Company" GridPane.rowIndex="2" />
+                              <Label text="Total Storage" GridPane.rowIndex="3" />
+                              <Label text="Left Storage" GridPane.rowIndex="4" />
+                              <Label text="Used Storage" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtTotalStorage" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtLeftStorage" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtUsedStorage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtStorageCompany" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtStorageType" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtStorageID" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtStoragesearch" alignment="CENTER" layoutX="877.0" layoutY="13.0" prefHeight="32.0" prefWidth="180.0" promptText="Search by Storage ID" />
+                        <Button fx:id="btnStoragesearch" layoutX="1068.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchStorageAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1086.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnStorageRefresh" layoutX="417.0" layoutY="17.0" mnemonicParsing="false" onAction="#refreshStorageAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="444.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnStorageAdd" layoutX="42.0" layoutY="527.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addStorageAction" prefHeight="37.0" prefWidth="114.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnStorageDelete" layoutX="212.0" layoutY="527.0" mnemonicParsing="false" onAction="#deleteStorageAction" prefHeight="37.0" prefWidth="107.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmIncidents" text="Incidents">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="526.0" prefWidth="697.0">
+                     <children>
+                        <Separator layoutX="409.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="798.0" prefWidth="0.0" />
+                        <TableView fx:id="INCtable" layoutX="409.0" layoutY="56.0" prefHeight="753.0" prefWidth="756.0">
+                           <columns>
+                              <TableColumn fx:id="tbINCID" prefWidth="95.0" text="Incident ID" />
+                              <TableColumn fx:id="tbINCSev" prefWidth="78.0" text="Severity" />
+                              <TableColumn fx:id="tbINCimpactedCI" prefWidth="113.0" text="Impacted CI" />
+                              <TableColumn fx:id="tbINCResolvedtime" prefWidth="145.0" text="Resolved Days" />
+                              <TableColumn fx:id="tbINCTeam" prefWidth="110.0" text="Team" />
+                              <TableColumn fx:id="tbINCRootCause" prefWidth="214.0" text="Root Cause" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="280.0" text="INCIDENT MANAGEMENT">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="56.0" prefHeight="17.0" prefWidth="195.0" text="Incidents Information">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="14.0" layoutY="92.0" prefHeight="430.0" prefWidth="382.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Incident ID" />
+                              <Label text="Severity" GridPane.rowIndex="3" />
+                              <Label text="Impacted CI" GridPane.rowIndex="4" />
+                              <Label text="Root Cause" GridPane.rowIndex="5" />
+                              <Label text="Resolved Date" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtINCRootCause" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtINCCreatedDt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtINCResolvedDT" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtINCimpactedCI" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtINCSev" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtINCID" GridPane.columnIndex="1" />
+                              <Label text="Created Date" GridPane.rowIndex="6" />
+                              <Label layoutX="10.0" layoutY="167.0" text="Team Involved" GridPane.rowIndex="8" />
+                              <TextField fx:id="txtINCTeam" layoutX="110.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Label layoutX="10.0" layoutY="17.0" text="Incident ID" />
+                              <TextField fx:id="txtINCtitle" layoutX="110.0" layoutY="133.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label layoutX="10.0" layoutY="197.0" text="Incident Title" GridPane.rowIndex="1" />
+                              <Label layoutX="10.0" layoutY="47.0" text="User ID" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtINCUserID" layoutX="110.0" layoutY="43.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="INCcreateddt" promptText="Created Date" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <DatePicker fx:id="INCResolvedDT" promptText="Resolved Date" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                           </children>
+                        </GridPane>
+                        <HBox layoutX="18.0" layoutY="404.0" prefHeight="64.0" prefWidth="212.0" spacing="10.0" />
+                        <TextField fx:id="txtINCsearch" alignment="CENTER" layoutX="875.0" layoutY="13.0" prefHeight="32.0" prefWidth="180.0" promptText="Search by Incident ID" />
+                        <Button fx:id="btnINCsearch" layoutX="1076.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchIncidentsAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1094.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnINCRefresh" layoutX="454.0" layoutY="11.0" mnemonicParsing="false" onAction="#refreshIncidentsAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="27.0" fitWidth="54.0" layoutX="475.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnINCAdd" layoutX="34.0" layoutY="549.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addIncidentsAction" prefHeight="37.0" prefWidth="99.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnINCDelete" layoutX="223.0" layoutY="548.0" mnemonicParsing="false" onAction="#deleteIncidentsAction" prefHeight="37.0" prefWidth="99.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="AdmUserMgmt" text="UserManagement">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="533.0" prefWidth="779.0">
+                     <children>
+                        <Separator layoutX="365.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="819.0" prefWidth="5.0" />
+                        <TableView fx:id="table" layoutX="367.0" layoutY="56.0" prefHeight="753.0" prefWidth="796.0">
+                           <columns>
+                              <TableColumn fx:id="tbempid" prefWidth="120.0" text="Empid" />
+                              <TableColumn fx:id="tbfname" prefWidth="108.0" text="First Name" />
+                              <TableColumn fx:id="tblname" prefWidth="105.0" text="Last Name" />
+                              <TableColumn fx:id="tbemaild" prefWidth="205.0" text="Email ID" />
+                              <TableColumn fx:id="tbphone" prefWidth="104.0" text="Phone" />
+                              <TableColumn fx:id="tbrole" prefWidth="153.0" text="Role" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="276.0" text="EMPLOYEE REGISTRATION">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#0d79dd" />
+                                    <Stop color="#e40d0d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="66.0" prefHeight="28.0" prefWidth="269.0" text="Employee Personal Info">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font></Label>
+                        <GridPane layoutX="26.0" layoutY="93.0" prefHeight="366.0" prefWidth="334.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Emp id" />
+                              <Label text="First Name" GridPane.rowIndex="1" />
+                              <Label text="Last Name" GridPane.rowIndex="2" />
+                              <Label text="Email ID" GridPane.rowIndex="3" />
+                              <Label text="Phone" GridPane.rowIndex="4" />
+                              <Label text="Role" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtemailid" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtphone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtrole" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtlname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtfname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtEmpID" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="txtsearch" alignment="CENTER" layoutX="867.0" layoutY="19.0" prefHeight="32.0" prefWidth="180.0" promptText="Search...by EmpID" />
+                        <Button fx:id="btnsearch" layoutX="1060.0" layoutY="19.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="31.0" prefWidth="58.0" />
+                        <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="1078.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Search.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnRefresh" layoutX="382.0" layoutY="11.0" mnemonicParsing="false" onAction="#refreshTableAction" prefHeight="35.0" prefWidth="68.0" />
+                        <ImageView fitHeight="29.0" fitWidth="27.0" layoutX="397.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="updateuserphno" layoutX="37.0" layoutY="552.0" mnemonicParsing="false" onAction="#userphoneupdate" prefHeight="37.0" prefWidth="289.0" text="Update Phone Number">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Button>
+                        <Button fx:id="btnAdd" layoutX="37.0" layoutY="481.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addAction" prefHeight="37.0" prefWidth="119.0" text="Add">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDelete" layoutX="209.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="37.0" prefWidth="117.0" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnupdateUserPassword" layoutX="37.0" layoutY="618.0" mnemonicParsing="false" onAction="#updateUserPassword" prefHeight="37.0" prefWidth="289.0" text="Update Password">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <HBox layoutX="1057.0" prefHeight="37.0" prefWidth="107.0">
+         <children>
+            <Button fx:id="btnlogout" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="127.0" text="Logout">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

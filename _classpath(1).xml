@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="E:/Advanced Topics in Data management ITMD523/Project/Report_Project_IT_IMS/ITSystem/lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Shephalika/Downloads/charm-glisten-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Shephalika/Downloads/charm-down-desktop-0.0.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
