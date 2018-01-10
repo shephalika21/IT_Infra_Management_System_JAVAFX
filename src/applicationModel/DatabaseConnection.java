@@ -21,7 +21,7 @@ public class DatabaseConnection
 	 try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			 conn=DriverManager.getConnection("jdbc:oracle:thin:@www.papademas.net:1521:orcl","ora_shekhar","oracle");
+			 conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost_or_servername:1521:orcl","username","password");
 		
 		System.out.println("DB COnnected");}
 		catch(Exception e)
